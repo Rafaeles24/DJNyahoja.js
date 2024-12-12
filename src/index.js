@@ -2,10 +2,11 @@ const { Client, GatewayIntentBits, Collection, REST, Routes } = require('discord
 const fs = require('node:fs');
 const path = require('node:path');
 
-require('dotenv').config();
+const configPath = path.join(__dirname, '..', 'config.json'); 
+const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
-const token = process.env.TOKEN;
-const clientId = process.env.CLIENTID;
+const token = config.token;
+const clientId = config.client_id;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers]});
 
