@@ -9,7 +9,9 @@ const Song = sequelize.define('Song',
             references: {
                 model: Queue,
                 key: 'id'
-            }
+            },
+            onDelete: 'CASCADE',
+            onUpdate: 'SET NULL'
         },
         url: {
             type: DataTypes.STRING

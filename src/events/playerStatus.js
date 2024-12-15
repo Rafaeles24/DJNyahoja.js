@@ -25,7 +25,7 @@ module.exports = {
                     if (nextSong.action === 'playing') {
                         const embedNextSong = new EmbedBuilder()
                             .setColor("#1DB954")
-                            .setTitle(`<:Youtube_logo:1316629065997750282> ${nextSong.song.position}° Siguiente -> Ahora `)
+                            .setTitle(`<:youtube_logo:1316974495851876352>  🎶 ${nextSong.loop ? `Loop Activado` : ` Siguiente -> ${nextSong.song.position}° en orden de reproducción.` }`)
                             .setDescription(`\n🎶 Título: ${nextSong.song.title} \nDuración: ⌚ ${nextSong.song.duration} \nLoop: ${nextSong.loop ? 'Activo' : 'Inactivo'}`)
                             .setThumbnail(nextSong.song.thumbnail)
                             .setFooter({ text: `Pedido por ${nextSong.song.user_globalName}`, iconURL: nextSong.song.user_avatar })
@@ -38,6 +38,10 @@ module.exports = {
                         queue = await Queue.findOne({
                             where: { id: guild.id }
                         });
+
+                        queue.is_playing = false;
+                        queue.save();
+                        
                         const embedFinishQueue = new EmbedBuilder()
                             .setColor("#bf9000")
                             .setDescription('/ᐠ - ˕ -マ Ⳋ No hay más canciones en la cola de reproducción');
@@ -55,8 +59,7 @@ module.exports = {
                             }
         
                             const embedDisconnect = new EmbedBuilder()
-                                .setColor("#bf9000")
-                                .setDescription('/ᐠ - ˕ -マ Ⳋ No hay más canciones en la cola de reproducción, me desconectaré');
+                                .setDescription('/ᐠ - ˕ -マ Ⳋ Me desconectaré');
 
                             console.log(`🔻 [REPRODUCTOR - ${guild.name}] El tiempo de espera ha finalizado, Bot Desconectado`);
 

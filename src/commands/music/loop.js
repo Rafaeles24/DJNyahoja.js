@@ -38,14 +38,12 @@ module.exports = {
             const looped = await loopMusic(guild);
             if (looped.status === 'loop') {
                 const loopEmbed = new EmbedBuilder()
-                    .setDescription('⏸️ /ᐠ - ˕ -マ Ⳋ Loop activado para esta canción')
-                    .setFooter({ text: `${user.globalName}`, iconURL: `${user.avatarURL()}`})
+                    .setDescription('🪃  /ᐠ - ˕ -マ Ⳋ Loop activado para la canción que escuchas ahora.')
                 
                 return interaction.reply({ embeds: [loopEmbed] });
             } else if (looped.status === 'no-loop') {
                 const loopEmbed = new EmbedBuilder()
-                    .setDescription('⏸️ /ᐠ - ˕ -マ Ⳋ Loop desactivado para esta canción')
-                    .setFooter({ text: `${user.globalName}`, iconURL: `${user.avatarURL()}`})
+                    .setDescription('🪃  /ᐠ - ˕ -マ Ⳋ Loop desactivado para esta canción')
                 
                 return interaction.reply({ embeds: [loopEmbed] });
             }

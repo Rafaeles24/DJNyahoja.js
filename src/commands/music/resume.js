@@ -39,7 +39,6 @@ module.exports = {
             if (resumed) {
                 const pauseEmbed = new EmbedBuilder()
                     .setDescription('▶️ /ᐠ - ˕ -マ Ⳋ Reproductor en curso.')
-                    .setFooter({ text: `${user.globalName}`, iconURL: `${user.avatarURL()}`})
                 
                 return interaction.reply({ embeds: [pauseEmbed] });
             } 

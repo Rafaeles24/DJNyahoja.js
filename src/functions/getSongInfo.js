@@ -1,4 +1,4 @@
-const ytdl = require("@distube/ytdl-core");
+const ytdl = require('@distube/ytdl-core');
 
 async function getSongInfo(url) {
     try {
@@ -17,7 +17,7 @@ async function getSongInfo(url) {
         }
 
     } catch (err) {
-        console.log(`Hubo un error al intentar obtener la info de la cancion.`);
+        console.log(`Hubo un error al intentar obtener la info de la cancion ${err}`);
         return null;
     }
 }

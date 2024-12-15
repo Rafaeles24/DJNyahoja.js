@@ -41,14 +41,12 @@ module.exports = {
             if (skiped.status === 'skiped') {
                 const pauseEmbed = new EmbedBuilder()
                     .setDescription('⏭️ /ᐠ - ˕ -マ Ⳋ Saltando cancion.')
-                    .setFooter({ text: `${user.globalName}`, iconURL: `${user.avatarURL()}`})
                 
                 return interaction.editReply({ embeds: [pauseEmbed] });
 
             } else if (skiped.status === 'no-songs') {
                 const noMusicEmbed = new EmbedBuilder()
-                    .setDescription('⏭️ /ᐠ - ˕ -マ Ⳋ No hay mas canciones en cola.')
-                    .setFooter({ text: `${user.globalName}`, iconURL: `${user.avatarURL()}`})
+                    .setDescription('🪃 /ᐠ - ˕ -マ Ⳋ No hay mas canciones en cola.')
                 
                 return interaction.editReply({ embeds: [noMusicEmbed] });
             }

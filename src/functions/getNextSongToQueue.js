@@ -9,7 +9,7 @@ async function getNextSongToQueue(guild) {
 
         if (queue) {
             const nextSong = await Song.findOne({
-                where: { queue_id: queue.id, position: queue.now_playing + 1 }
+                where: { queue_id: queue.id, position: queue.is_loop ? queue.now_playing : queue.now_playing + 1 }
             });
 
             if (nextSong) {

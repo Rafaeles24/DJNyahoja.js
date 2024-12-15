@@ -23,9 +23,9 @@ module.exports = {
 
             const url = options.getString('url');
 
-            const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|shorts\/|embed\/|v\/|c\/)([a-zA-Z0-9_-]{11})([?&].*)?$/;
+            /* const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|shorts\/|embed\/|v\/|c\/)([a-zA-Z0-9_-]{11})([?&].*)?$/;
 
-            if (!youtubeRegex.test(url)) return interaction.editReply({ content: '¡Debes proporcionar una url valida!', ephemeral: true });
+            if (!youtubeRegex.test(url)) return interaction.editReply({ content: '¡Debes proporcionar una url valida!', ephemeral: true }); */
 
             let connection = getVoiceConnection(guild.id);
 
@@ -39,17 +39,17 @@ module.exports = {
 
             const playSong = await playMusic(url, connection, guild, user, channel);
 
-            if (playSong.action == 'queue') {
+            if (playSong.action == 'queue') {   
                 const embedQueue = new EmbedBuilder()
                 .setColor("#f1c232")
-                .setTitle(`<:Youtube_logo:1316629065997750282> ${playSong.song.position}° ¡Agregado a la cola!`)
+                .setTitle(`<:youtube_logo:1316974495851876352>  🎶 ${playSong.song.position}° ¡Agregado a la cola!`)
                 .setDescription(`🎶 Título: ${playSong.song.title} \n⌚ Tiempo: ${playSong.song.duration} \nURL: ${playSong.song.url} \nLoop: ${playSong.loop ? 'Activo' : 'Inactivo'}`);
             
                 return interaction.editReply({ embeds: [embedQueue] });
             } else if (playSong.action == 'playing') {
                 const embedPlay = new EmbedBuilder()
                 .setColor("#1DB954")
-                .setTitle("<:Youtube_logo:1316629065997750282> Let's go party!")
+                .setTitle("<:youtube_logo:1316974495851876352>  🎶 Let's go party!")
                 .setDescription(`🎶 Título: ${playSong.song.title} \n⌚ Tiempo: ${playSong.song.duration} \nURL: ${playSong.song.url} \nLoop: ${playSong.loop ? 'Activo' : 'Inactivo'}`)
                 .setThumbnail(playSong.song.thumbnail)
                 .setFooter({ text: `Pedido por ${playSong.song.user_globalName}`, iconURL: playSong.song.user_avatar})

@@ -22,7 +22,6 @@ async function playMusic(url, connection, guild, user, channel) {
             
             console.log(`[GUILD - ${guild.name}] Solicitando reproductor de audio en el servidor ${guild.name}`)
             const resource = await decodeUrlSong(nextSong.data.url);
-
             connection.subscribe(player);
             player.play(resource);
             playerStateChange.execute(guild, channel);
